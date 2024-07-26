@@ -1,0 +1,318 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.css')
+  screen and (prefers-color-scheme: dark);
+
+@import url('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.css') screen
+  and (prefers-color-scheme: light);
+
+:root {
+  --font-mono: Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier,
+    monospace;
+  --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+  --font-sans: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  --color-text-1: #000000;
+  --color-text-2: #1a1a1a;
+  --color-background-1: #ffffff;
+  --color-background-2: #f6f8fa;
+  --color-background-3: #e5e7eb;
+  --color-accent: #d9450c;
+  --color-background-accent: #f4cf58;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-1: #ffffff;
+    --color-text-2: #eeeeee;
+    --color-background-1: #000000;
+    --color-background-2: #111111;
+    --color-background-3: #373737;
+    --color-accent: #ffa691;
+    --color-background-accent: #1f775e;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+blockquote,
+figure,
+nav,
+ol,
+p,
+pre,
+section,
+ul {
+  margin-bottom: 1.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 750px;
+  padding: 2rem;
+  border-radius: 6px;
+  overflow-x: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  background: var(--color-background-1);
+  color: var(--color-text-2);
+  font-size: 1.1rem;
+  line-height: 1.5;
+  font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  color: var(--color-text-1);
+  padding-top: 0.875rem;
+  margin-bottom: 1rem;
+
+  & > a:only-child {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+
+    &:before {
+      content: '#';
+      position: absolute;
+      right: 100%;
+      margin-right: 10px;
+      opacity: 0.2;
+    }
+
+    &:hover:before {
+      opacity: 0.4;
+    }
+  }
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-text-1);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--color-background-2);
+  margin-bottom: 1.5rem;
+}
+
+a:not([class]) {
+  color: var(--color-accent);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+blockquote {
+  padding: 1.5rem;
+  border-left: 10px solid var(--color-background-3);
+  font-size: 1.4rem;
+  color: var(--color-text-2);
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><rect width="100%" height="100%" fill-opacity="0" /><text y=".8em" font-size="90" fill-opacity=".1">❞</text></svg>')
+    no-repeat bottom right 1em / auto min(8em, 80%) var(--color-background-2);
+  font-style: italic;
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+
+  & footer,
+  & cite {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-style: normal;
+
+    &:before {
+      content: '— ';
+    }
+  }
+}
+
+header {
+  background: var(--color-background-2);
+  border-bottom: 1px solid var(--color-background-3);
+  padding: 2rem 1.5rem;
+  margin: -2rem calc(0px - (50vw - 50%)) 2rem;
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+
+  h1 {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    a {
+      text-decoration: none;
+      color: var(--color-accent);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+code:not(pre *) {
+  font-family: var(--font-mono);
+  background: var(--color-background-2);
+  border: 1px solid var(--color-background-3);
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 0.9rem;
+}
+
+pre {
+  font-size: 0.9rem;
+  border: 1px solid var(--color-background-3);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+pre:not(:has(.hljs)) {
+  font-family: var(--font-mono);
+  background: var(--color-background-2);
+  padding: 15px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 1px solid var(--color-background-3);
+  margin: 2rem auto;
+}
+
+ol,
+ul {
+  padding-left: 2rem;
+
+  > ol,
+  > ul {
+    margin-bottom: 0;
+  }
+
+  li {
+    margin-top: 0.4rem;
+
+    & *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+mark {
+  background: none;
+  background-image: linear-gradient(
+    120deg,
+    var(--color-background-accent) 0%,
+    var(--color-background-accent) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.4em;
+  background-position: 0 88%;
+  color: inherit;
+  font-weight: inherit;
+}
+
+img,
+mux-player {
+  max-width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    0px 100px 80px rgba(0, 0, 0, 0.07);
+}
+
+figure {
+  margin: 2rem 0;
+
+  figcaption {
+    color: var(--color-text-2);
+    text-align: center;
+    font-size: 0.875rem;
+  }
+}
+
+.gallery {
+  overflow: auto;
+  margin-bottom: 1rem;
+  scrollbar-color: var(--color-background-3) var(--color-background-1);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+
+  & > * {
+    display: flex;
+    gap: 1rem;
+  }
+
+  figure {
+    flex-shrink: 0;
+
+    img {
+      display: inline-block;
+      height: 200px !important;
+      box-shadow:
+        0px 1.9px 4.4px -30px rgba(0, 0, 0, 0.165),
+        0px 15px 35px -30px rgba(0, 0, 0, 0.33);
+    }
+  }
+}
+
+.pill {
+  background: var(--color-background-2);
+  border: 1px solid var(--color-background-3);
+  border-radius: 4px;
+  padding: 3px 5px;
+
+  a& {
+    text-decoration: none;
+    color: inherit;
+
+    &:hover {
+      background: var(--color-background-3);
+    }
+  }
+}
+
+button {
+  border: 1px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  border-radius: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  padding: 0.5rem 0.7rem;
+  font-size: inherit;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+}

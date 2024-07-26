@@ -1,0 +1,32 @@
+{
+  "name": "Next Starter Kit",
+  "description": "A Next.js project template powered by DatoCMS",
+  "previewImage": "https://www.datocms-assets.com/205/1721810576-tech-starter-kit.png?w=600&auto=format",
+  "datocmsProjectId": "135973",
+  "deploymentType": "static",
+  "buildCommand": "npm run build",
+  "environmentVariables": {
+    "DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CDA Only (Published)"
+    },
+    "DATOCMS_DRAFT_CONTENT_CDA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CDA Only (Draft)"
+    },
+    "DATOCMS_CMA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CMA Only (Admin)"
+    },
+    "SECRET_API_TOKEN": {
+      "type": "string",
+      "value": "secretTokenProtectingWebhookEndpointsFromBeingCalledByAnyone"
+    }
+  },
+  "livePreviewUrl": "https://datocms-nextjs-starter-kit.vercel.app/",
+  "postDeploy": {
+    "type": "apiCall",
+    "url": "/api/post-deploy",
+    "description": "Setting up the DatoCMS project..."
+  }
+}
