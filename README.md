@@ -1,4 +1,6 @@
-<!--datocms-autoinclude-header start--><a href="https://www.datocms.com/"><img src="https://www.datocms.com/images/full_logo.svg" height="60"></a>
+<!--datocms-autoinclude-header start-->
+
+<a href="https://www.datocms.com/"><img src="https://www.datocms.com/images/full_logo.svg" height="60"></a>
 
 👉 [Visit the DatoCMS homepage](https://www.datocms.com) or see [What is DatoCMS?](#what-is-datocms)
 
@@ -69,8 +71,9 @@ It is highly recommended to follow [these instructions](https://gql-tada.0no.co/
 
 ## <!--datocms-autoinclude-footer start-->
 
-# What is DatoCMS?
+---
 
+# What is DatoCMS?
 <a href="https://www.datocms.com/"><img src="https://www.datocms.com/images/full_logo.svg" height="60"></a>
 
 [DatoCMS](https://www.datocms.com/) is the REST & GraphQL Headless CMS for the modern web.
@@ -85,7 +88,6 @@ Trusted by over 25,000 enterprise businesses, agency partners, and individuals a
 - 🆕 Stay up to date on new features and fixes on the [changelog](https://www.datocms.com/product-updates)
 
 **Our featured repos:**
-
 - [datocms/react-datocms](https://github.com/datocms/react-datocms): React helper components for images, Structured Text rendering, and more
 - [datocms/js-rest-api-clients](https://github.com/datocms/js-rest-api-clients): Node and browser JavaScript clients for updating and administering your content. For frontend fetches, we recommend using our [GraphQL Content Delivery API](https://www.datocms.com/docs/content-delivery-api) instead.
 - [datocms/cli](https://github.com/datocms/cli): Command-line interface that includes our [Contentful importer](https://github.com/datocms/cli/tree/main/packages/cli-plugin-contentful) and [Wordpress importer](https://github.com/datocms/cli/tree/main/packages/cli-plugin-wordpress)
