@@ -69,6 +69,16 @@ Your website should be up and running on [http://localhost:3000](http://localhos
 
 It is highly recommended to follow [these instructions](https://gql-tada.0no.co/get-started/installation#vscode-setup) for an optimal experience with Visual Studio Code, including features like diagnostics, auto-completions, and type hovers for GraphQL.
 
+## Updating the GraphQL schema
+
+When the DatoCMS schema, which includes various models and fields, undergoes any updates or modifications, it is essential to ensure that these changes are properly reflected in your local development environment. To accomplish this, you should locally run the following command:
+
+```
+npm run generate-schema
+```
+
+Executing this task will automatically update the `schema.graphql` file for you. This crucial step ensures that gql.tada will have access to the most current and accurate version of the GraphQL schema, allowing your application to function correctly with the latest data structures and relationships defined within your DatoCMS setup.
+
 ## <!--datocms-autoinclude-footer start-->
 
 ---
