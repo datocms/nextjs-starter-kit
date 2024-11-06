@@ -79,11 +79,22 @@ npm run generate-schema
 
 Executing this task will automatically update the `schema.graphql` file for you. This crucial step ensures that gql.tada will have access to the most current and accurate version of the GraphQL schema, allowing your application to function correctly with the latest data structures and relationships defined within your DatoCMS setup.
 
+## Next 14? But I want Next 15!
+
+[Next 15 requires React 19](https://nextjs.org/docs/app/building-your-application/upgrading/version-15#react-19), which is currently in Release Candidate status as of today. Vercel aims to incorporate cutting-edge features in their releases, as this aligns with their vision for Next.js. To ensure maximum "production readiness," we advise exercising caution and waiting a bit longer before recommending that our users transition to React 19.
+
+If you are inclined to experiment with the latest developments, you are welcome to begin with this starter and execute the codemods as outlined in the [Next 14 to 15 migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/version-15#upgrading-from-14-to-15): we have tested this approach, and everything appears to function properly.
+
+```
+npx @next/codemod@canary upgrade latest
+```
+
 ## <!--datocms-autoinclude-footer start-->
 
 ---
 
 # What is DatoCMS?
+
 <a href="https://www.datocms.com/"><img src="https://www.datocms.com/images/full_logo.svg" height="60"></a>
 
 [DatoCMS](https://www.datocms.com/) is the REST & GraphQL Headless CMS for the modern web.
@@ -98,6 +109,7 @@ Trusted by over 25,000 enterprise businesses, agency partners, and individuals a
 - 🆕 Stay up to date on new features and fixes on the [changelog](https://www.datocms.com/product-updates)
 
 **Our featured repos:**
+
 - [datocms/react-datocms](https://github.com/datocms/react-datocms): React helper components for images, Structured Text rendering, and more
 - [datocms/js-rest-api-clients](https://github.com/datocms/js-rest-api-clients): Node and browser JavaScript clients for updating and administering your content. For frontend fetches, we recommend using our [GraphQL Content Delivery API](https://www.datocms.com/docs/content-delivery-api) instead.
 - [datocms/cli](https://github.com/datocms/cli): Command-line interface that includes our [Contentful importer](https://github.com/datocms/cli/tree/main/packages/cli-plugin-contentful) and [Wordpress importer](https://github.com/datocms/cli/tree/main/packages/cli-plugin-wordpress)
