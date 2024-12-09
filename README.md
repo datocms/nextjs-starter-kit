@@ -54,7 +54,7 @@ Copy the values of the following tokens into the specified environment variable:
 - `DATOCMS_DRAFT_CONTENT_CDA_TOKEN`: CDA Only (Draft)
 - `DATOCMS_CMA_TOKEN`: CMA Only (Admin)
 
-Then set `SECRET_API_TOKEN` as a sicure string — it will be used to safeguard all route handlers from incoming requests from untrusted sources.
+Then set `SECRET_API_TOKEN` as a sicure string (you can use `openssl rand -hex 32` or any other cryptographically-secure random string generator). It will be used to safeguard all route handlers from incoming requests from untrusted sources:
 
 #### Run your project locally
 
