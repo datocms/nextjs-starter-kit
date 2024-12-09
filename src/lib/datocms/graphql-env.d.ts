@@ -1,20 +1,7 @@
 /* eslint-disable */
 /* prettier-ignore */
 
-/** An IntrospectionQuery representation of your schema.
- *
- * @remarks
- * This is an introspection of your schema saved as a file by GraphQLSP.
- * It will automatically be used by `gql.tada` to infer the types of your GraphQL documents.
- * If you need to reuse this data or update your `scalars`, update `tadaOutputLocation` to
- * instead save to a .ts instead of a .d.ts file.
- */
-export type introspection = {
-  name: never;
-  query: 'Query';
-  mutation: never;
-  subscription: never;
-  types: {
+export type introspection_types = {
     'Boolean': unknown;
     'BooleanType': unknown;
     'CollectionMetadata': { kind: 'OBJECT'; name: 'CollectionMetadata'; fields: { 'count': { name: 'count'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'IntType'; ofType: null; }; } }; }; };
@@ -111,7 +98,22 @@ export type introspection = {
     'VideoFileField': { kind: 'OBJECT'; name: 'VideoFileField'; fields: { '_createdAt': { name: '_createdAt'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'DateTime'; ofType: null; }; } }; '_editingUrl': { name: '_editingUrl'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; '_updatedAt': { name: '_updatedAt'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'DateTime'; ofType: null; }; } }; 'alt': { name: 'alt'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'author': { name: 'author'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'basename': { name: 'basename'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'blurUpThumb': { name: 'blurUpThumb'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'blurhash': { name: 'blurhash'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'colors': { name: 'colors'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'ColorField'; ofType: null; }; }; }; } }; 'copyright': { name: 'copyright'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'customData': { name: 'customData'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'CustomData'; ofType: null; }; } }; 'exifInfo': { name: 'exifInfo'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'CustomData'; ofType: null; }; } }; 'filename': { name: 'filename'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'focalPoint': { name: 'focalPoint'; type: { kind: 'OBJECT'; name: 'focalPoint'; ofType: null; } }; 'format': { name: 'format'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'height': { name: 'height'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'IntType'; ofType: null; }; } }; 'id': { name: 'id'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'UploadId'; ofType: null; }; } }; 'md5': { name: 'md5'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'mimeType': { name: 'mimeType'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'notes': { name: 'notes'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'responsiveImage': { name: 'responsiveImage'; type: { kind: 'OBJECT'; name: 'ResponsiveImage'; ofType: null; } }; 'size': { name: 'size'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'IntType'; ofType: null; }; } }; 'smartTags': { name: 'smartTags'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; }; }; } }; 'tags': { name: 'tags'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'LIST'; name: never; ofType: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; }; }; } }; 'thumbhash': { name: 'thumbhash'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'title': { name: 'title'; type: { kind: 'SCALAR'; name: 'String'; ofType: null; } }; 'url': { name: 'url'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'String'; ofType: null; }; } }; 'video': { name: 'video'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'OBJECT'; name: 'UploadVideoField'; ofType: null; }; } }; 'width': { name: 'width'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'IntType'; ofType: null; }; } }; }; };
     'VideoMp4Res': { name: 'VideoMp4Res'; enumValues: 'low' | 'medium' | 'high'; };
     'focalPoint': { kind: 'OBJECT'; name: 'focalPoint'; fields: { 'x': { name: 'x'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'FloatType'; ofType: null; }; } }; 'y': { name: 'y'; type: { kind: 'NON_NULL'; name: never; ofType: { kind: 'SCALAR'; name: 'FloatType'; ofType: null; }; } }; }; };
-  };
+};
+
+/** An IntrospectionQuery representation of your schema.
+ *
+ * @remarks
+ * This is an introspection of your schema saved as a file by GraphQLSP.
+ * It will automatically be used by `gql.tada` to infer the types of your GraphQL documents.
+ * If you need to reuse this data or update your `scalars`, update `tadaOutputLocation` to
+ * instead save to a .ts instead of a .d.ts file.
+ */
+export type introspection = {
+  name: never;
+  query: 'Query';
+  mutation: never;
+  subscription: never;
+  types: introspection_types;
 };
 
 import * as gqlTada from 'gql.tada';
