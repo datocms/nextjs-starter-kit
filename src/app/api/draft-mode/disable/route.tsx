@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 import type { NextRequest, NextResponse } from 'next/server';
 import {
   handleUnexpectedError,
-  invalidRequestResponse, isRelativeUrl,
+  invalidRequestResponse,
+  isRelativeUrl,
   makeDraftModeWorkWithinIframes,
 } from '../../utils';
 
