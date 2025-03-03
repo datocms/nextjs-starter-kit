@@ -100,3 +100,20 @@ export function makeDraftModeWorkWithinIframes() {
     partitioned: true,
   });
 }
+
+export function isRelativeUrl(path: string):boolean {
+  try {
+    // Try to create a URL object — if it succeeds without a base, it's absolute
+    new URL(path);
+    return false;
+  } catch {
+    try {
+      // Verify it can be parsed as a relative URL by providing a base
+      new URL(path, 'http://example.com');
+      return true;
+    } catch {
+      // If both attempts fail, it's not a valid URL at all
+      return false;
+    }
+  }
+}
