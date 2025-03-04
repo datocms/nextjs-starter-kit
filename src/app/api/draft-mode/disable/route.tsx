@@ -4,6 +4,7 @@ import type { NextRequest, NextResponse } from 'next/server';
 import {
   handleUnexpectedError,
   invalidRequestResponse,
+  isRelativeUrl,
   makeDraftModeWorkWithinIframes,
 } from '../../utils';
 
@@ -21,7 +22,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
   try {
     // Avoid open redirect vulnerabilities
-    if (url.startsWith('http://') || url.startsWith('https://')) {
+    if (!isRelativeUrl(url)) {
       return invalidRequestResponse('URL must be relative!', 422);
     }
 
