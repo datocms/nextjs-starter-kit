@@ -12,17 +12,17 @@
     "prepare": "npx simple-git-hooks && npm run generate-schema"
   },
   "dependencies": {
-    "@datocms/cda-client": "^0.2.1",
-    "@datocms/cma-client": "^3.3.5",
+    "@datocms/cda-client": "^0.2.6",
+    "@datocms/cma-client": "^4.0.1",
     "@types/highlight.js": "^10.1.0",
-    "datocms-structured-text-to-plain-text": "^4.0.1",
-    "datocms-structured-text-utils": "^4.0.1",
+    "datocms-structured-text-to-plain-text": "^5.0.0",
+    "datocms-structured-text-utils": "^5.0.0",
     "gql.tada": "^1.8.10",
     "highlight.js": "^11.10.0",
     "jsdom": "^24.1.0",
     "next": "14.2.4",
     "react": "^18",
-    "react-datocms": "^7.0.1",
+    "react-datocms": "^7.2.2",
     "react-dom": "^18",
     "serialize-error": "^11.0.3"
   },
