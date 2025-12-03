@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "next lint && prettier --check .",
     "generate-schema": "dotenv -c -- bash -c 'gql.tada generate schema https://graphql.datocms.com --header \"X-Exclude-Invalid: true\" --header \"Authorization: $DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN\"'",
+    "generate-cma-types": "dotenv -c -- bash -c 'datocms schema:generate src/lib/datocms/cma-types.ts --api-token $DATOCMS_CMA_TOKEN'",
     "format": "npx prettier . --write",
-    "prepare": "npx simple-git-hooks && npm run generate-schema"
+    "prepare": "npx simple-git-hooks && npm run generate-schema && npm run generate-cma-types"
   },
   "dependencies": {
     "@datocms/cda-client": "^0.2.7",
@@ -27,6 +28,7 @@
     "serialize-error": "^12.0.0"
   },
   "devDependencies": {
+    "@datocms/cli": "^3.0.0",
     "@types/jsdom": "^27.0.0",
     "@types/node": "^24",
     "@types/react": "^19",

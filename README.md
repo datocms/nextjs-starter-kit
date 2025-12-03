@@ -79,6 +79,35 @@ npm run generate-schema
 
 Executing this task will automatically update the `schema.graphql` file for you. This crucial step ensures that gql.tada will have access to the most current and accurate version of the GraphQL schema, allowing your application to function correctly with the latest data structures and relationships defined within your DatoCMS setup.
 
+## Updating CMA types (Content Management API)
+
+In addition to the GraphQL schema for content delivery, this project also provides type safety for the [Content Management API (CMA)](https://www.datocms.com/docs/content-management-api). This is useful when you need to programmatically create, update, or manage records.
+
+When your DatoCMS schema changes, regenerate the CMA types by running:
+
+```
+npm run generate-cma-types
+```
+
+This command uses the [DatoCMS CLI](https://www.datocms.com/docs/cli) to generate TypeScript types in `src/lib/datocms/cma-types.ts` based on your project's schema. The generated types give you:
+
+- **Full autocomplete** for record attributes in your IDE
+- **Compile-time errors** when accessing non-existent fields
+- **No manual type casts** when working with record properties
+
+### End-to-end type safety
+
+This starter kit provides complete type safety for both DatoCMS APIs:
+
+| API | Purpose | Type Generation | Output File |
+|-----|---------|-----------------|-------------|
+| **CDA** (GraphQL) | Content delivery/fetching | `npm run generate-schema` | `schema.graphql` |
+| **CMA** (REST) | Content management/creation | `npm run generate-cma-types` | `src/lib/datocms/cma-types.ts` |
+
+Both commands are automatically run during `npm install` via the `prepare` script.
+
+For more information, see the [Type-safe Development with TypeScript](https://www.datocms.com/docs/content-management-api/using-the-nodejs-clients#type-safe-development-with-typescript) documentation.
+
 ## Next.js 16
 
 This starter kit uses Next.js 16, which includes React 19 and all the latest features and improvements from the Next.js ecosystem.

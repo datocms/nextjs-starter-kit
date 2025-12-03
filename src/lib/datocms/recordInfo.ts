@@ -1,4 +1,14 @@
-import type { SchemaTypes } from '@datocms/cma-client';
+/*
+ * Type-safe record handling using DatoCMS's generated types.
+ *
+ * This file uses types generated from your DatoCMS schema via `npm run generate-cma-types`.
+ * The generated types provide full autocomplete and compile-time safety when
+ * accessing record fields.
+ *
+ * See: https://www.datocms.com/docs/content-management-api/resources/item#type-safe-development-with-typescript
+ */
+import type { RawApiTypes } from '@datocms/cma-client';
+import type { Page } from './cma-types';
 
 /*
  * Both the "Web Previews" and "SEO/Readability Analysis" plugins from DatoCMS
@@ -12,7 +22,7 @@ import type { SchemaTypes } from '@datocms/cma-client';
  */
 
 export async function recordToWebsiteRoute(
-  item: SchemaTypes.Item,
+  item: RawApiTypes.Item<Page>,
   itemTypeApiKey: string,
   locale: string,
 ): Promise<string | null> {
@@ -20,22 +30,23 @@ export async function recordToWebsiteRoute(
     case 'page': {
       return '/real-time-updates';
     }
-    case 'article': {
-      return `/blog/${await recordToSlug(item, itemTypeApiKey, locale)}`;
-    }
     default:
       return null;
   }
 }
 
 export async function recordToSlug(
-  item: SchemaTypes.Item,
+  item: RawApiTypes.Item<Page>,
   itemTypeApiKey: string,
   locale: string,
 ): Promise<string | null> {
   switch (itemTypeApiKey) {
-    case 'article': {
-      return item.attributes.slug as string;
+    case 'page': {
+      /*
+       * With generated types, TypeScript knows exactly which fields exist.
+       * `item.attributes.title` is fully typed - no casts needed!
+       */
+      return item.attributes.title;
     }
     default:
       return null;
