@@ -75,15 +75,15 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
      * do this, we set the cookies that are obtained by temporarily enabling
      * Draft Mode.
      */
-    draftMode().enable();
+    (await draftMode()).enable();
 
     const pageRequest = await fetch(new URL(websitePath, request.nextUrl).toString(), {
       headers: {
-        cookie: cookies().toString(),
+        cookie: (await cookies()).toString(),
       },
     });
 
-    draftMode().disable();
+    (await draftMode()).disable();
 
     if (!pageRequest.ok) {
       return invalidRequestResponse(`Invalid status for ${websitePath}: ${pageRequest.status}`);

@@ -84,7 +84,7 @@ export const generateMetadata = generateMetadataFn({
 });
 
 export default async function Page() {
-  const { isEnabled: isDraftModeEnabled } = draftMode();
+  const { isEnabled: isDraftModeEnabled } = await draftMode();
 
   const { page } = await executeQuery(query, {
     includeDrafts: isDraftModeEnabled,

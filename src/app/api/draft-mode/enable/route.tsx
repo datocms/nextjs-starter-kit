@@ -32,9 +32,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       return invalidRequestResponse('URL must be relative!', 422);
     }
 
-    draftMode().enable();
+    (await draftMode()).enable();
 
-    makeDraftModeWorkWithinIframes();
+    await makeDraftModeWorkWithinIframes();
   } catch (error) {
     return handleUnexpectedError(error);
   }

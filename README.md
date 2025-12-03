@@ -79,15 +79,9 @@ npm run generate-schema
 
 Executing this task will automatically update the `schema.graphql` file for you. This crucial step ensures that gql.tada will have access to the most current and accurate version of the GraphQL schema, allowing your application to function correctly with the latest data structures and relationships defined within your DatoCMS setup.
 
-## Next 14? But I want Next 15!
+## Next.js 16
 
-[Next 15 requires React 19](https://nextjs.org/docs/app/building-your-application/upgrading/version-15#react-19), which is currently in Release Candidate status as of today. Vercel aims to incorporate cutting-edge features in their releases, as this aligns with their vision for Next.js. To ensure maximum "production readiness," we advise exercising caution and waiting a bit longer before recommending that our users transition to React 19.
-
-If you are inclined to experiment with the latest developments, you are welcome to begin with this starter and execute the codemods as outlined in the [Next 14 to 15 migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/version-15#upgrading-from-14-to-15): we have tested this approach, and everything appears to function properly.
-
-```
-npx @next/codemod@canary upgrade latest
-```
+This starter kit uses Next.js 16, which includes React 19 and all the latest features and improvements from the Next.js ecosystem.
 
 ## <!--datocms-autoinclude-footer start-->
 

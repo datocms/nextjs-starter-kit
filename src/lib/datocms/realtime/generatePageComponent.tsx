@@ -22,7 +22,7 @@ export function generatePageComponent<PageProps, Result, Variables>(
   options: GeneratePageComponentOptions<PageProps, Result, Variables>,
 ) {
   return async function Page(unsanitizedPageProps: PageProps) {
-    const { isEnabled: isDraftModeEnabled } = draftMode();
+    const { isEnabled: isDraftModeEnabled } = await draftMode();
 
     /*
      * Since props passed from the server to client components must be

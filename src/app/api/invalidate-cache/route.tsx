@@ -29,7 +29,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return invalidRequestResponse('Invalid token', 401);
     }
 
-    revalidateTag(cacheTag);
+    revalidateTag(cacheTag, 'default');
 
     return successfulResponse();
   } catch (error) {

@@ -21,16 +21,18 @@ const query = graphql(
 );
 
 export async function generateMetadata() {
-  const { isEnabled: isDraftModeEnabled } = draftMode();
+  const { isEnabled: isDraftModeEnabled } = await draftMode();
   const data = await executeQuery(query, { includeDrafts: isDraftModeEnabled });
   return toNextMetadata(data._site.faviconMetaTags);
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { isEnabled: isDraftModeEnabled } = await draftMode();
+
   return (
     <html lang="en">
       <body>
@@ -47,7 +49,7 @@ export default function RootLayout({
               ⚡️ Real-time Updates Route
             </a>
           </nav>
-          <DraftModeToggler draftModeEnabled={draftMode().isEnabled} />
+          <DraftModeToggler draftModeEnabled={isDraftModeEnabled} />
         </header>
         <main>{children}</main>
       </body>
