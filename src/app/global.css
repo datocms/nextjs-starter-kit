@@ -5,8 +5,8 @@
   and (prefers-color-scheme: light);
 
 :root {
-  --font-mono: Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier,
-    monospace;
+  --font-mono:
+    Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier, monospace;
   --font-serif: Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
   --font-sans: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
   --color-text-1: #000000;
