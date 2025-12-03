@@ -99,10 +99,10 @@ This command uses the [DatoCMS CLI](https://www.datocms.com/docs/cli) to generat
 
 This starter kit provides complete type safety for both DatoCMS APIs:
 
-| API | Purpose | Type Generation | Output File |
-|-----|---------|-----------------|-------------|
-| **CDA** (GraphQL) | Content delivery/fetching | `npm run generate-schema` | `schema.graphql` |
-| **CMA** (REST) | Content management/creation | `npm run generate-cma-types` | `src/lib/datocms/cma-types.ts` |
+| API               | Purpose                     | Type Generation              | Output File                    |
+| ----------------- | --------------------------- | ---------------------------- | ------------------------------ |
+| **CDA** (GraphQL) | Content delivery/fetching   | `npm run generate-schema`    | `schema.graphql`               |
+| **CMA** (REST)    | Content management/creation | `npm run generate-cma-types` | `src/lib/datocms/cma-types.ts` |
 
 Both commands are automatically run during `npm install` via the `prepare` script.
 
