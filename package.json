@@ -20,7 +20,7 @@
     "datocms-structured-text-utils": "^5.1.6",
     "gql.tada": "^1.9.0",
     "highlight.js": "^11.11.1",
-    "jsdom": "^27.2.0",
+    "linkedom": "^0.18.12",
     "next": "^16",
     "react": "^19",
     "react-datocms": "^7.2.3",

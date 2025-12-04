@@ -1,4 +1,5 @@
 import { recordToWebsiteRoute } from '@/lib/datocms/recordInfo';
+import { deserializeRawItem } from '@datocms/rest-client-utils';
 import { type NextRequest, NextResponse } from 'next/server';
 import { handleUnexpectedError, invalidRequestResponse, withCORS } from '../utils';
 
@@ -41,7 +42,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     const { item, locale } = await request.json();
 
     // We can use this info to generate the frontend URL associated
-    const url = await recordToWebsiteRoute(item, locale);
+    const url = await recordToWebsiteRoute(deserializeRawItem(item), locale);
 
     const response: WebPreviewsResponse = { previewLinks: [] };
 

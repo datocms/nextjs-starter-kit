@@ -6,7 +6,7 @@ import { buildClient } from '@datocms/cma-client';
  * See: https://www.datocms.com/docs/content-management-api/resources/item#use-generated-types
  */
 import type { AnyModel } from '@/lib/datocms/cma-types';
-import { JSDOM } from 'jsdom';
+import { parseHTML } from 'linkedom';
 import { cookies, draftMode } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
 import { handleUnexpectedError, invalidRequestResponse, withCORS } from '../utils';
@@ -107,7 +107,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     // Parse the HTML response into a DOM tree
-    const { document } = new JSDOM(await pageRequest.text()).window;
+    const { document } = parseHTML(await pageRequest.text());
 
     /*
      * To get only the page content without the header/footer, use a specific
