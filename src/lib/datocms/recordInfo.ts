@@ -8,7 +8,7 @@
  * See: https://www.datocms.com/docs/content-management-api/resources/item#type-safe-development-with-typescript
  */
 import type { RawApiTypes } from '@datocms/cma-client';
-import type { Page } from './cma-types';
+import type { AnyModel } from './cma-types';
 
 /*
  * Both the "Web Previews" and "SEO/Readability Analysis" plugins from DatoCMS
@@ -22,12 +22,12 @@ import type { Page } from './cma-types';
  */
 
 export async function recordToWebsiteRoute(
-  item: RawApiTypes.Item<Page>,
-  itemTypeApiKey: string,
-  locale: string,
+  item: RawApiTypes.Item<AnyModel>,
+  _locale: string,
 ): Promise<string | null> {
-  switch (itemTypeApiKey) {
-    case 'page': {
+  switch (item.__itemTypeId) {
+    // Page model
+    case 'JdG722SGTSG_jEB1Jx-0XA': {
       return '/real-time-updates';
     }
     default:
@@ -36,14 +36,14 @@ export async function recordToWebsiteRoute(
 }
 
 export async function recordToSlug(
-  item: RawApiTypes.Item<Page>,
-  itemTypeApiKey: string,
-  locale: string,
+  item: RawApiTypes.Item<AnyModel>,
+  _locale: string,
 ): Promise<string | null> {
-  switch (itemTypeApiKey) {
-    case 'page': {
+  switch (item.__itemTypeId) {
+    // Page model
+    case 'JdG722SGTSG_jEB1Jx-0XA': {
       /*
-       * With generated types, TypeScript knows exactly which fields exist.
+       * Using generated types, TypeScript knows exactly which fields exist.
        * `item.attributes.title` is fully typed - no casts needed!
        */
       return item.attributes.title;

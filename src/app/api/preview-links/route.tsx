@@ -38,10 +38,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
      * along with information about which locale they are currently viewing in
      * the interface
      */
-    const { item, itemType, locale } = await request.json();
+    const { item, locale } = await request.json();
 
     // We can use this info to generate the frontend URL associated
-    const url = await recordToWebsiteRoute(item, itemType.attributes.api_key, locale);
+    const url = await recordToWebsiteRoute(item, locale);
 
     const response: WebPreviewsResponse = { previewLinks: [] };
 
