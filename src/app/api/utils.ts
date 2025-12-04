@@ -78,16 +78,15 @@ import { cookies } from 'next/headers';
  * attribute... but our website needs to be accessible within the iframe of the
  * "Web Previews" plugin! Setting a cookie inside an iframe is considered a
  * third-party cookie... so we need to rewrite the cookie set by
- * `draftMode().enable()`, manually adding the partitioned attribute.
+ * `draft.enable()`, manually adding the partitioned attribute.
  *
  * Third-party cookie deprecation: https://developers.google.com/privacy-sandbox/3pcd
  * CHIPS: https://developers.google.com/privacy-sandbox/3pcd/chips
  */
 
 export async function makeDraftModeWorkWithinIframes() {
-  // Read the cookie just set by draftMode().enable() or draftMode().disable()...
-  const cookieStore = await cookies();
-  const cookie = cookieStore.get('__prerender_bypass')!;
+  // Read the cookie just set by draft.enable() or draft.disable()...
+  const cookie = (await cookies()).get('__prerender_bypass')!;
 
   // and reapply it with `partitioned: true`
   (await cookies()).set({
