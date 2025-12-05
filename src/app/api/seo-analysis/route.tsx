@@ -6,7 +6,7 @@ import { buildClient } from '@datocms/cma-client';
  * See: https://www.datocms.com/docs/content-management-api/resources/item#use-generated-types
  */
 import type { AnyModel } from '@/lib/datocms/cma-types';
-import { parseHTML } from 'linkedom';
+import { parse } from 'node-html-parser';
 import { cookies, draftMode } from 'next/headers';
 import { type NextRequest, NextResponse } from 'next/server';
 import { handleUnexpectedError, invalidRequestResponse, withCORS } from '../utils';
@@ -107,13 +107,13 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     // Parse the HTML response into a DOM tree
-    const { document } = parseHTML(await pageRequest.text());
+    const root = parse(await pageRequest.text());
 
     /*
      * To get only the page content without the header/footer, use a specific
      * selector on the page instead of taking everything from the body.
      */
-    const contentEl = document.querySelector('body');
+    const contentEl = root.querySelector('body');
 
     if (!contentEl) {
       return invalidRequestResponse('No content found');
@@ -121,12 +121,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Build the response in the format expected by the plugin
     const response: SeoAnalysis = {
-      locale: document.querySelector('html')?.getAttribute('lang') || 'en',
+      locale: root.querySelector('html')?.getAttribute('lang') || 'en',
       slug: slug ?? 'unknown',
       permalink: websitePath,
-      title: document.querySelector('title')?.textContent ?? null,
-      description:
-        document.querySelector('meta[name="description"]')?.getAttribute('content') ?? null,
+      title: root.querySelector('title')?.text ?? null,
+      description: root.querySelector('meta[name="description"]')?.getAttribute('content') ?? null,
       content: contentEl.innerHTML,
     };
 
