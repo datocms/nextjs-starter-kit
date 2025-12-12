@@ -28,7 +28,7 @@ export async function recordToWebsiteRoute(
   switch (item.__itemTypeId) {
     // Page model
     case 'JdG722SGTSG_jEB1Jx-0XA': {
-      return '/real-time-updates';
+      return `/real-time-updates/${item.attributes.slug}`;
     }
     default:
       return null;
@@ -44,9 +44,9 @@ export async function recordToSlug(
     case 'JdG722SGTSG_jEB1Jx-0XA': {
       /*
        * Using generated types, TypeScript knows exactly which fields exist.
-       * `item.attributes.title` is fully typed - no casts needed!
+       * `item.attributes.slug` is fully typed - no casts needed!
        */
-      return item.attributes.title;
+      return item.attributes.slug;
     }
     default:
       return null;

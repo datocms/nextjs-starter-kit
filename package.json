@@ -13,7 +13,7 @@
     "prepare": "npx simple-git-hooks && npm run generate-schema && npm run generate-cma-types"
   },
   "dependencies": {
-    "@datocms/cda-client": "^0.2.7",
+    "@datocms/cda-client": "^0.2.9",
     "@datocms/cma-client": "^5.2.0",
     "@types/highlight.js": "^10.1.0",
     "datocms-structured-text-to-plain-text": "^5.1.6",

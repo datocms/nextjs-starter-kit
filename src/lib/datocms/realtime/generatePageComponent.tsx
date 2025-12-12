@@ -35,7 +35,9 @@ export function generatePageComponent<PageProps, Result, Variables>(
 
     const pageProps = pagePropsWithoutSearchParams as unknown as PageProps;
 
-    const variables = options.buildQueryVariables?.(pageProps) || ({} as Variables);
+    const variables = options.buildQueryVariables
+      ? await options.buildQueryVariables(pageProps)
+      : ({} as Variables);
 
     const data = await executeQuery(options.query, {
       variables,

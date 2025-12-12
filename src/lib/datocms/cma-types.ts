@@ -23,6 +23,9 @@ export type Page = ItemTypeDefinition<
       blocks: ImageGalleryBlock | ImageBlock | VideoBlock;
       inline_blocks: Page;
     };
+    slug: {
+      type: 'slug';
+    };
     seo_settings_social: {
       type: 'seo';
     };
