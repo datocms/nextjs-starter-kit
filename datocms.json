@@ -16,7 +16,7 @@
     },
     "DATOCMS_CMA_TOKEN": {
       "type": "datocmsAccessToken",
-      "tokenName": "CMA Only (Admin)"
+      "tokenName": "CMA Only (Read)"
     },
     "SECRET_API_TOKEN": {
       "type": "string",
