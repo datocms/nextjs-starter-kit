@@ -55,7 +55,7 @@ export default function ContentLink() {
       //
       // To disable overlays by default on all devices, simply omit this prop.
       // Users can always toggle overlays on/off temporarily by pressing Alt/Option.
-      enableClickToEdit={enableClickToEdit || undefined}
+      enableClickToEdit={enableClickToEdit}
     />
   );
 }
