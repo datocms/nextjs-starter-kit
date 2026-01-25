@@ -48,5 +48,5 @@ type Props = Omit<VideoPlayerProps, 'data'> & {
 export default function VideoPlayer({ data, ...other }: Props) {
   const unmaskedData = readFragment(VideoPlayerFragment, data);
 
-  return <DatoVideoPlayer data={unmaskedData.video} accentColor="var(--color-accent)" {...other} />;
+  return <DatoVideoPlayer data={unmaskedData.video} accentColor="var(--bg-accent)" {...other} />;
 }
