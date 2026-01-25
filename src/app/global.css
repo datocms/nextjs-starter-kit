@@ -1,9 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..650&family=Geist:wght@100..650&display=swap');
 
 :root {
   --font-sans:
+    'Geist', Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier,
+    monospace;
+
+  --font-mono:
     'Geist Mono', Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier,
     monospace;
+
   --hue: 265;
   /* Body text, headings */
   --text-body: oklch(36.85% 0.0442 var(--hue));
@@ -189,6 +194,10 @@ main {
         content: '— ';
       }
     }
+  }
+
+  code {
+    font-family: var(--font-mono);
   }
 
   code:not(pre *) {
