@@ -349,36 +349,17 @@ header {
   background: var(--bg-subtle);
   border-bottom: 1px solid var(--bg-border);
 
-  @media screen and (min-width: 1250px) {
-    display: flex;
-    align-items: center;
-    padding: 0.3rem 1.25rem;
-    gap: 2rem;
-  }
-
-  @media screen and (max-width: 1249px) {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    grid-template-areas:
-      'title button'
-      'nav nav';
-    align-items: center;
-    padding: 1rem;
-    gap: 0.75rem;
-  }
+  /* Default: single-line flex layout */
+  display: flex;
+  align-items: center;
+  padding: 0.3rem 1.25rem;
+  gap: 2rem;
 
   h1 {
     font-size: 1.1em;
     padding-bottom: 0;
     border-bottom: 0;
-
-    @media screen and (min-width: 1250px) {
-      flex: 1;
-    }
-
-    @media screen and (max-width: 1249px) {
-      grid-area: title;
-    }
+    flex: 1;
   }
 
   nav {
@@ -387,15 +368,7 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 0.9em;
-
-    @media screen and (min-width: 1250px) {
-      gap: 0.1rem 2rem;
-    }
-
-    @media screen and (max-width: 1249px) {
-      grid-area: nav;
-      gap: 0.1rem 1rem;
-    }
+    gap: 0.1rem 2rem;
 
     a {
       text-decoration: none;
@@ -408,9 +381,6 @@ header {
   }
 
   button {
-    @media screen and (max-width: 1249px) {
-      grid-area: button;
-    }
     border: 0;
     background: var(--bg-accent);
     font-family: inherit;
@@ -458,6 +428,80 @@ header {
     &:hover,
     &:focus {
       background: oklch(from var(--bg-accent) calc(l - 0.05) c h);
+    }
+  }
+}
+
+/*
+ * Responsive header layout using :has() quantity queries.
+ * - 3 links: switches to 2-row layout at 1050px
+ * - 1-2 links: switches to 2-row layout at 630px
+ * - All: switches to fully stacked (3-row) at 480px
+ */
+
+@media (max-width: 1050px) {
+  header:has(nav > :nth-child(3)) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'title button'
+      'nav nav';
+    padding: 1rem;
+    gap: 0.75rem;
+
+    h1 {
+      grid-area: title;
+    }
+
+    nav {
+      grid-area: nav;
+      gap: 0.1rem 1rem;
+    }
+
+    button {
+      grid-area: button;
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      'title button'
+      'nav nav';
+    padding: 1rem;
+    gap: 0.75rem;
+
+    h1 {
+      grid-area: title;
+    }
+
+    nav {
+      grid-area: nav;
+      gap: 0.1rem 1rem;
+    }
+
+    button {
+      grid-area: button;
+    }
+  }
+}
+
+/* All headers: fully stacked at 480px */
+@media (max-width: 480px) {
+  header,
+  header:has(nav > :nth-child(3)) {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'title'
+      'nav'
+      'button';
+    text-align: center;
+
+    button {
+      justify-self: center;
     }
   }
 }
