@@ -34,7 +34,7 @@ export default function VideoBlock({ data }: Props) {
   const unmaskedData = readFragment(VideoBlockFragment, data);
 
   return (
-    <figure>
+    <figure data-datocms-content-link-group>
       {/* Render the video player component */}
       <VideoPlayer data={unmaskedData.asset} />
       {/* Display the title of the video asset below the video player */}

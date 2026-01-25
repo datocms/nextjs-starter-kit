@@ -37,10 +37,10 @@ export default function ImageGalleryBlock({ data }: Props) {
   const unmaskedData = readFragment(ImageGalleryBlockFragment, data);
 
   return (
-    <div className="gallery">
+    <div className="gallery" data-datocms-content-link-boundary>
       <div>
         {unmaskedData.assets.map((asset) => (
-          <figure key={asset.id}>
+          <figure key={asset.id} data-datocms-content-link-group>
             {/* Display responsive image for each asset */}
             <ResponsiveImage data={asset.responsiveImage} imgStyle={{ width: 'auto' }} />
             {/* Display title for each asset */}

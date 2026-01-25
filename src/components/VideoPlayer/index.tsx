@@ -24,6 +24,9 @@ export const VideoPlayerFragment = graphql(/* GraphQL */ `
       # if provided, title is displayed in the upper left corner of the video
       title
 
+      # alt text for the video, useful for content-link metadata
+      alt
+
       # if provided, width and height are used to define the aspect ratio of the
       # player, so to avoid layout jumps during the rendering.
       width

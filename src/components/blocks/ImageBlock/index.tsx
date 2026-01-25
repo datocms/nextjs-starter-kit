@@ -36,7 +36,7 @@ export default function ImageBlock({ data }: Props) {
   const unmaskedData = readFragment(ImageBlockFragment, data);
 
   return (
-    <figure>
+    <figure data-datocms-content-link-group>
       {/* Display responsive image */}
       <ResponsiveImage data={unmaskedData.asset.responsiveImage} />
       {/* Display image title */}

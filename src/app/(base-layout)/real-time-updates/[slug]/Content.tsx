@@ -41,88 +41,97 @@ const Content: ContentComponentType<PageProps, ResultOf<typeof query>> = ({ data
        * of a significantly reduced and tailored set of possible tags
        * for editorial content, along with the capability to create hyperlinks
        * to other DatoCMS records and embed custom DatoCMS blocks.
+       *
+       * The data-datocms-content-link-group attribute enables ContentLink to
+       * properly handle click-to-edit for structured text and embedded blocks.
        */}
-      <StructuredText
-        data={data.page.structuredText}
-        customNodeRules={
-          /*
-           * Although the component knows how to convert all "standard" elements
-           * (headings, bullet lists, etc.) into HTML, it's possible to
-           * customize the rendering of each node.
-           */
-          [
-            renderNodeRule(isCode, ({ node, key }) => <Code key={key} node={node} />),
-            renderNodeRule(isHeading, ({ node, key, children }) => (
-              <HeadingWithAnchorLink node={node} key={key}>
-                {children}
-              </HeadingWithAnchorLink>
-            )),
-          ]
-        }
-        renderBlock={
-          /*
-           * If the structured text embeds any blocks, it's up to you to decide
-           * how to render them:
-           */
-          ({ record }) => {
-            switch (record.__typename) {
-              case 'VideoBlockRecord': {
-                return <VideoBlock data={record} />;
-              }
-              case 'ImageBlockRecord': {
-                return <ImageBlock data={record} />;
-              }
-              case 'ImageGalleryBlockRecord': {
-                return <ImageGalleryBlock data={record} />;
-              }
-              default: {
-                return null;
+      <div data-datocms-content-link-group>
+        <StructuredText
+          data={data.page.structuredText}
+          customNodeRules={
+            /*
+             * Although the component knows how to convert all "standard" elements
+             * (headings, bullet lists, etc.) into HTML, it's possible to
+             * customize the rendering of each node.
+             */
+            [
+              renderNodeRule(isCode, ({ node, key }) => <Code key={key} node={node} />),
+              renderNodeRule(isHeading, ({ node, key, children }) => (
+                <HeadingWithAnchorLink node={node} key={key}>
+                  {children}
+                </HeadingWithAnchorLink>
+              )),
+            ]
+          }
+          renderBlock={
+            /*
+             * If the structured text embeds any blocks, it's up to you to decide
+             * how to render them:
+             */
+            ({ record }) => {
+              switch (record.__typename) {
+                case 'VideoBlockRecord': {
+                  return <VideoBlock data={record} />;
+                }
+                case 'ImageBlockRecord': {
+                  return <ImageBlock data={record} />;
+                }
+                case 'ImageGalleryBlockRecord': {
+                  return <ImageGalleryBlock data={record} />;
+                }
+                default: {
+                  return null;
+                }
               }
             }
           }
-        }
-        renderInlineRecord={
-          /*
-           * If the structured text includes a reference to another DatoCMS
-           * record, it's up to you to decide how to render them:
-           */
-          ({ record }) => {
-            switch (record.__typename) {
-              case 'PageRecord': {
-                return (
-                  <Link href={`/real-time-updates/${record.slug}`} className="pill">
-                    {record.title}
-                  </Link>
-                );
-              }
-              default: {
-                return null;
-              }
-            }
-          }
-        }
-        renderLinkToRecord={
-          /*
-           * If the structured text includes a link to another DatoCMS record,
-           * it's your decision to determine where the link should lead, or if
-           * you wish to customize its appearance:
-           */
-          ({ transformedMeta, record, children }) => {
-            switch (record.__typename) {
-              case 'PageRecord': {
-                return (
-                  <Link {...transformedMeta} href={`/real-time-updates/${record.slug}`}>
-                    {children}
-                  </Link>
-                );
-              }
-              default: {
-                return null;
+          renderInlineRecord={
+            /*
+             * If the structured text includes a reference to another DatoCMS
+             * record, it's up to you to decide how to render them:
+             */
+            ({ record }) => {
+              switch (record.__typename) {
+                case 'PageRecord': {
+                  return (
+                    <Link
+                      href={`/real-time-updates/${record.slug}`}
+                      className="pill"
+                      data-datocms-content-link-group
+                    >
+                      {record.title}
+                    </Link>
+                  );
+                }
+                default: {
+                  return null;
+                }
               }
             }
           }
-        }
-      />
+          renderLinkToRecord={
+            /*
+             * If the structured text includes a link to another DatoCMS record,
+             * it's your decision to determine where the link should lead, or if
+             * you wish to customize its appearance:
+             */
+            ({ transformedMeta, record, children }) => {
+              switch (record.__typename) {
+                case 'PageRecord': {
+                  return (
+                    <Link {...transformedMeta} href={`/real-time-updates/${record.slug}`}>
+                      {children}
+                    </Link>
+                  );
+                }
+                default: {
+                  return null;
+                }
+              }
+            }
+          }
+        />
+      </div>
       <footer>Published at {data.page._firstPublishedAt}</footer>
     </>
   );

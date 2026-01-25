@@ -21,6 +21,9 @@
     "SECRET_API_TOKEN": {
       "type": "string",
       "value": "secretTokenProtectingWebhookEndpointsFromBeingCalledByAnyone"
+    },
+    "DATOCMS_BASE_EDITING_URL": {
+      "type": "datocmsProjectUrl"
     }
   },
   "livePreviewUrl": "https://datocms-nextjs-starter-kit.vercel.app/",

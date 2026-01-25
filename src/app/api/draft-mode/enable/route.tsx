@@ -19,7 +19,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest): Promise<NextResponse> {
   // Parse query string parameters
   const token = request.nextUrl.searchParams.get('token');
-  const url = request.nextUrl.searchParams.get('url') || '/';
+  const redirectTo = request.nextUrl.searchParams.get('redirect') || '/';
 
   try {
     // Ensure that the request is coming from a trusted source
@@ -28,7 +28,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     // Avoid open redirect vulnerabilities
-    if (!isRelativeUrl(url)) {
+    if (!isRelativeUrl(redirectTo)) {
       return invalidRequestResponse('URL must be relative!', 422);
     }
 
@@ -40,5 +40,5 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     return handleUnexpectedError(error);
   }
 
-  redirect(url);
+  redirect(redirectTo);
 }

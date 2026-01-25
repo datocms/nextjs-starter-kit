@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 import Content from './Content';
 import { query } from './common';
 
-/*
+/**
  * This Next.js route provides a starting point for handling routes that require
  * a query to DatoCMS to generate the page's content and metadata. Feel free to
  * modify this pattern, or create your own custom solution, following the
@@ -20,6 +20,7 @@ import { query } from './common';
  * - the content returned from DatoCMS is the published one;
  * - the rendering of `<Content />` occurs on the server side;
  * - the page is static and cached until the next change of content on DatoCMS.
+ *   This means that regular visitors won't generate additional calls to DatoCMS.
  *
  * When Draft Mode is ON:
  * - the content returned from DatoCMS will be those in draft;
@@ -27,6 +28,9 @@ import { query } from './common';
  *   changes made to the content reflected on the page in real time, without the
  *   need to refresh the page;
  * - as a result, the rendering of `<Content />` will occur on the client side.
+ *
+ * @see src/lib/datocms/executeQuery.ts for caching implementation details
+ * @see src/app/api/invalidate-cache/route.tsx for webhook-based cache invalidation
  */
 
 const { generateMetadataFn, Page } = generatePageComponentAndMetadataFn({

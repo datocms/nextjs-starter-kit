@@ -54,6 +54,8 @@ export function generatePageComponent<PageProps, Result, Variables>(
         initialData={data}
         pageProps={pageProps}
         includeDrafts={isDraftModeEnabled}
+        contentLink={isDraftModeEnabled ? 'v1' : undefined}
+        baseEditingUrl={isDraftModeEnabled ? process.env.DATOCMS_BASE_EDITING_URL : undefined}
         excludeInvalid={true}
       />
     ) : (

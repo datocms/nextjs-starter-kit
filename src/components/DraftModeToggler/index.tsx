@@ -32,14 +32,22 @@ export default function DraftModeToggler({ draftModeEnabled }: Props) {
 
   if (draftModeEnabled) {
     return (
-      <button type="button" onClick={handleClick}>
+      <button
+        type="button"
+        onClick={handleClick}
+        data-tooltip="Return to viewing published content"
+      >
         Disable Draft Mode
       </button>
     );
   }
 
   return (
-    <button type="button" onClick={handleClick}>
+    <button
+      type="button"
+      onClick={handleClick}
+      data-tooltip="Preview unpublished changes from DatoCMS"
+    >
       Enable Draft Mode
     </button>
   );
