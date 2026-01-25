@@ -2,8 +2,7 @@
 
 :root {
   --font-sans:
-    'Geist', Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier,
-    monospace;
+    'Geist', Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 
   --font-mono:
     'Geist Mono', Menlo, Consolas, monaco, 'Ubuntu Mono', 'Liberation Mono', 'Courier New', Courier,
