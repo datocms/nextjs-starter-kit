@@ -2,7 +2,6 @@
 
 import { ContentLink as DatoCMSContentLink } from 'react-datocms';
 import { usePathname, useRouter } from 'next/navigation';
-import { useSyncExternalStore } from 'react';
 
 /**
  * ContentLink component enables click-to-edit overlays for DatoCMS content.
@@ -29,15 +28,31 @@ import { useSyncExternalStore } from 'react';
  * This integration is completely automatic when running inside the plugin's iframe,
  * with graceful fallback to opening edit URLs in a new tab when running standalone.
  *
+ * For more complex UIs (e.g., a toolbar to toggle click-to-edit on/off), you can use
+ * the `useContentLink` hook from `react-datocms`, which provides full programmatic
+ * control over the content link controller:
+ *
+ * ```tsx
+ * import { useContentLink } from 'react-datocms';
+ *
+ * function MyToolbar() {
+ *   const { enableClickToEdit, disableClickToEdit, isClickToEditEnabled } = useContentLink({
+ *     onNavigateTo: (path) => router.push(path),
+ *   });
+ *
+ *   return (
+ *     <button onClick={() => isClickToEditEnabled() ? disableClickToEdit() : enableClickToEdit()}>
+ *       Toggle Edit Mode
+ *     </button>
+ *   );
+ * }
+ * ```
+ *
  * @see https://www.datocms.com/marketplace/plugins/i/datocms-plugin-web-previews
  */
-const hasHover = () => window.matchMedia('(hover: hover)').matches;
-const subscribe = () => () => {};
-
 export default function ContentLink() {
   const router = useRouter();
   const pathname = usePathname();
-  const enableClickToEdit = useSyncExternalStore(subscribe, hasHover, () => false);
 
   return (
     <DatoCMSContentLink
@@ -55,7 +70,7 @@ export default function ContentLink() {
       //
       // To disable overlays by default on all devices, simply omit this prop.
       // Users can always toggle overlays on/off temporarily by pressing Alt/Option.
-      enableClickToEdit={enableClickToEdit}
+      enableClickToEdit={{ hoverOnly: true }}
     />
   );
 }
