@@ -15,7 +15,7 @@
   "dependencies": {
     "@datocms/cda-client": "^0.2.10",
     "@datocms/cma-client": "^5.2.6",
-    "@datocms/content-link": "^0.3.12",
+    "@datocms/content-link": "^0.3.13",
     "@types/highlight.js": "^10.1.0",
     "datocms-structured-text-to-plain-text": "^5.1.7",
     "datocms-structured-text-utils": "^5.1.7",
@@ -24,7 +24,7 @@
     "next": "^16",
     "node-html-parser": "^7.0.1",
     "react": "^19",
-    "react-datocms": "^7.2.12",
+    "react-datocms": "^7.2.14",
     "react-dom": "^19",
     "serialize-error": "^12.0.0"
   },
