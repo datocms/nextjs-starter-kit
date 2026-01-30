@@ -30,6 +30,13 @@ async function installWebPreviewsPlugin(client: Client, baseUrl: string) {
             `/api/preview-links?token=${process.env.SECRET_API_TOKEN}`,
             baseUrl,
           ).toString(),
+          visualEditing: {
+            enableDraftModeUrl: new URL(
+              `/api/draft-mode/enable?token=${process.env.SECRET_API_TOKEN}`,
+              baseUrl,
+            ).toString(),
+            initialPath: '/',
+          },
         },
       ],
       startOpen: true,

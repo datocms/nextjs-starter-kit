@@ -15,7 +15,6 @@
   "dependencies": {
     "@datocms/cda-client": "^0.2.10",
     "@datocms/cma-client": "^5.2.6",
-    "@datocms/content-link": "^0.3.17",
     "@types/highlight.js": "^10.1.0",
     "datocms-structured-text-to-plain-text": "^5.1.7",
     "datocms-structured-text-utils": "^5.1.7",

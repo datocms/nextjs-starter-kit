@@ -190,7 +190,7 @@ export default async function Page({ params }: PageProps) {
                     <Link
                       href={`/basic/page/${record.slug}`}
                       className="pill"
-                      data-datocms-content-link-group
+                      data-datocms-content-link-boundary
                     >
                       {record.title}
                     </Link>

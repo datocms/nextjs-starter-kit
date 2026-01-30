@@ -97,7 +97,7 @@ const Content: ContentComponentType<PageProps, ResultOf<typeof query>> = ({ data
                     <Link
                       href={`/real-time-updates/${record.slug}`}
                       className="pill"
-                      data-datocms-content-link-group
+                      data-datocms-content-link-boundary
                     >
                       {record.title}
                     </Link>
