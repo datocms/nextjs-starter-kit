@@ -35,7 +35,7 @@ async function installWebPreviewsPlugin(client: Client, baseUrl: string) {
               `/api/draft-mode/enable?token=${process.env.SECRET_API_TOKEN}`,
               baseUrl,
             ).toString(),
-            initialPath: '/',
+            initialPath: '/real-time-updates/home',
           },
         },
       ],
