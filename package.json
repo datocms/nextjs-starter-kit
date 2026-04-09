@@ -16,6 +16,8 @@
     "@datocms/cda-client": "^0.2.10",
     "@datocms/cma-client": "^5.2.6",
     "@types/highlight.js": "^10.1.0",
+    "datocms-plugin-sdk": "^2.1.1",
+    "datocms-react-ui": "^2.1.4",
     "datocms-structured-text-to-plain-text": "^5.1.7",
     "datocms-structured-text-utils": "^5.1.7",
     "gql.tada": "^1.9.0",

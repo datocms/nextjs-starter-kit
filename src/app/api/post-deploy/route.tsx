@@ -12,6 +12,17 @@ export async function OPTIONS() {
 }
 
 /**
+ * Install the private plugin hosted by this same project. The plugin entry
+ * point is the /private-datocms-plugin page, which DatoCMS loads in an iframe.
+ */
+async function installPrivatePlugin(client: Client, baseUrl: string) {
+  await client.plugins.create({
+    name: 'Private Plugin',
+    url: new URL('/private-datocms-plugin', baseUrl).toString(),
+  });
+}
+
+/**
  * Install and configure the "Web Previews" plugin
  *
  * https://www.datocms.com/marketplace/plugins/i/datocms-plugin-web-previews
@@ -98,6 +109,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       installWebPreviewsPlugin(client, baseUrl),
       createCacheInvalidationWebhook(client, baseUrl),
       installSEOAnalysisPlugin(client, baseUrl),
+      installPrivatePlugin(client, baseUrl),
     ]);
 
     return successfulResponse();
