@@ -1,5 +1,5 @@
 import { type FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
-import { type ImagePropTypes, SRCImage } from 'react-datocms';
+import { type RSCImagePropTypes, RSCImage } from 'react-datocms';
 
 /**
  * Let's define the GraphQL fragment needed for the component to function.
@@ -33,12 +33,12 @@ export const ResponsiveImageFragment = graphql(/* GraphQL */ `
   }
 `);
 
-type Props = Omit<ImagePropTypes, 'data'> & {
+type Props = Omit<RSCImagePropTypes, 'data'> & {
   data: FragmentOf<typeof ResponsiveImageFragment>;
 };
 
 /**
- * This component is a wrapper for the `<SRCImage />` component provided by
+ * This component is a wrapper for the `<RSCImage />` component provided by
  * react-datocms, optimized for use with graphql.tada. We define the necessary
  * GraphQL fragment for this component to function only once, then reuse it
  * wherever needed.
@@ -46,5 +46,5 @@ type Props = Omit<ImagePropTypes, 'data'> & {
 export default function ResponsiveImage({ data, ...other }: Props) {
   const unmaskedData = readFragment(ResponsiveImageFragment, data);
 
-  return <SRCImage data={unmaskedData} {...other} />;
+  return <RSCImage data={unmaskedData} {...other} />;
 }
