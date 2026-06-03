@@ -1,7 +1,7 @@
 import { render as structuredTextToPlainText } from 'datocms-structured-text-to-plain-text';
 import type { Heading } from 'datocms-structured-text-utils';
 import type { ReactNode } from 'react';
-import { stripStega } from 'react-datocms';
+import { stripStega } from '@datocms/content-link';
 
 type Props = {
   node: Heading;
