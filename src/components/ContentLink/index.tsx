@@ -1,6 +1,6 @@
 'use client';
 
-import { ContentLink as DatoCMSContentLink } from 'react-datocms';
+import { ContentLink as DatoCMSContentLink } from 'react-datocms/content-link';
 import { usePathname, useRouter } from 'next/navigation';
 
 /**
@@ -33,7 +33,7 @@ import { usePathname, useRouter } from 'next/navigation';
  * control over the content link controller:
  *
  * ```tsx
- * import { useContentLink } from 'react-datocms';
+ * import { useContentLink } from 'react-datocms/use-content-link';
  *
  * function MyToolbar() {
  *   const { enableClickToEdit, disableClickToEdit, isClickToEditEnabled } = useContentLink({

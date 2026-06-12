@@ -1,5 +1,5 @@
 import { type FragmentOf, graphql, readFragment } from '@/lib/datocms/graphql';
-import { type RSCImagePropTypes, RSCImage } from 'react-datocms';
+import { type RSCImagePropTypes, RSCImage } from 'react-datocms/rsc-image';
 
 /**
  * Let's define the GraphQL fragment needed for the component to function.
@@ -27,9 +27,6 @@ export const ResponsiveImageFragment = graphql(/* GraphQL */ `
 
     # LQIP (base64-encoded)
     base64
-
-    # you can omit 'sizes' if you explicitly pass the 'sizes' prop to the image component
-    sizes
   }
 `);
 

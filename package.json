@@ -27,7 +27,7 @@
     "next": "^16",
     "node-html-parser": "^7.0.1",
     "react": "^19",
-    "react-datocms": "^8.0.3",
+    "react-datocms": "^8.0.5",
     "react-dom": "^19",
     "serialize-error": "^12.0.0"
   },

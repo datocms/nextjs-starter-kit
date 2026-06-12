@@ -1,6 +1,9 @@
 import type { TadaDocumentNode } from 'gql.tada';
 import type { ComponentType } from 'react';
-import { type EnabledQueryListenerOptions, useQuerySubscription } from 'react-datocms';
+import {
+  type EnabledQueryListenerOptions,
+  useQuerySubscription,
+} from 'react-datocms/use-query-subscription';
 import type { ContentComponentType } from './generatePageComponent';
 
 /**

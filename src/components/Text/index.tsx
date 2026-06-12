@@ -1,7 +1,11 @@
 import HeadingWithAnchorLink from '@/components/HeadingWithAnchorLink';
 import { type CdaStructuredTextRecord, isCode, isHeading } from 'datocms-structured-text-utils';
 import dynamic from 'next/dynamic';
-import { StructuredText, type StructuredTextPropTypes, renderNodeRule } from 'react-datocms';
+import {
+  StructuredText,
+  type StructuredTextPropTypes,
+  renderNodeRule,
+} from 'react-datocms/structured-text';
 
 /**
  * Project-wide wrapper around `<StructuredText />` from `react-datocms`,

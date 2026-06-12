@@ -4,7 +4,7 @@ import { TagFragment } from '@/lib/datocms/commonFragments';
 import { executeQuery } from '@/lib/datocms/executeQuery';
 import { graphql } from '@/lib/datocms/graphql';
 import { draftMode } from 'next/headers';
-import { toNextMetadata } from 'react-datocms';
+import { toNextMetadata } from 'react-datocms/seo';
 
 import '../global.css';
 import { Metadata } from 'next';

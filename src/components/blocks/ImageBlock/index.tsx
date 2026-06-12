@@ -18,7 +18,7 @@ export const ImageBlockFragment = graphql(
     fragment ImageBlockFragment on ImageBlockRecord {
       asset {
         title
-        responsiveImage(sizes: "(max-width: 700px) 100vw, 700px") {
+        responsiveImage {
           ...ResponsiveImageFragment
         }
       }
