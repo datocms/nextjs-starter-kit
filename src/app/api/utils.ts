@@ -114,10 +114,7 @@ export async function makeDraftModeWorkWithinIframes() {
  * to the same host and pass; anything that escapes to another host — or fails to
  * parse — is rejected. The scheme is irrelevant: we only compare hostnames.
  */
-export function isSafeRedirectUrl(
-  candidate: string,
-  requestUrl: URL,
-): boolean {
+export function isSafeRedirectUrl(candidate: string, requestUrl: URL): boolean {
   try {
     const target = new URL(candidate, requestUrl);
     return target.hostname === requestUrl.hostname;
