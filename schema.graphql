@@ -2454,10 +2454,29 @@ input JsonFilter {
 
 scalar MetaTagAttributes
 
+enum MuxThumbnailFitMode {
+  preserve
+  stretch
+  crop
+  smartcrop
+  pad
+}
+
 enum MuxThumbnailFormatType {
   jpg
   png
   gif
+}
+
+enum MuxThumbnailRotation {
+  """Rotate 90° clockwise"""
+  ROTATE_90
+
+  """Rotate 180° clockwise"""
+  ROTATE_180
+
+  """Rotate 270° clockwise"""
+  ROTATE_270
 }
 
 """Specifies how to filter by image orientation"""
@@ -3362,13 +3381,41 @@ type UploadVideoField {
   ): String
   muxAssetId: String!
   muxPlaybackId: String!
+
+  """
+  Default poster frame, in seconds into the video. Resolves to the record-level field override when present, otherwise the upload-level default. `null` means Mux's default (middle of the video).
+  """
+  posterTime: Float
   streamingUrl: String!
   thumbhash: String
   thumbnailUrl(
-    """
-    The file extension of the requested image format. Either png, jpg or gif
-    """
+    """The file extension of the requested image. Either jpg, png or gif"""
     format: MuxThumbnailFormatType = jpg
+
+    """
+    Maps to the Mux `time` param: seconds into the video to grab the frame. When omitted, the upload's poster time is auto-injected (not applied to gif)
+    """
+    time: Float
+
+    """Maps to the Mux `width` param: thumbnail width in pixels"""
+    width: Int
+
+    """Maps to the Mux `height` param: thumbnail height in pixels"""
+    height: Int
+
+    """
+    Maps to the Mux `fit_mode` param: how the image fits the given dimensions
+    """
+    fitMode: MuxThumbnailFitMode
+
+    """Maps to the Mux `rotate` param: clockwise rotation in degrees"""
+    rotate: MuxThumbnailRotation
+
+    """Maps to the Mux `flip_v` param: flip the image vertically"""
+    flipV: Boolean
+
+    """Maps to the Mux `flip_h` param: flip the image horizontally"""
+    flipH: Boolean
   ): String!
   title(
     """The locale to use to fetch the field's content"""
