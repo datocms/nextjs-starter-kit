@@ -28,15 +28,14 @@
     "node-html-parser": "^7.0.1",
     "react": "^19",
     "react-datocms": "^8.0.5",
-    "react-dom": "^19",
-    "serialize-error": "^12.0.0"
+    "react-dom": "^19"
   },
   "devDependencies": {
-    "datocms": "^4.0.26",
     "@types/jsdom": "^27.0.0",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "datocms": "^4.0.26",
     "dotenv-cli": "^11.0.0",
     "prettier": "3.7.4",
     "simple-git-hooks": "^2.13.1",

@@ -37,10 +37,10 @@ async function installWebPreviewsPlugin(client: Client, baseUrl: string) {
       frontends: [
         {
           name: 'Production',
-          previewWebhook: new URL(
-            `/api/preview-links?token=${process.env.SECRET_API_TOKEN}`,
-            baseUrl,
-          ).toString(),
+          previewWebhook: new URL('/api/preview-links', baseUrl).toString(),
+          customHeaders: [
+            { name: 'Authorization', value: `Bearer ${process.env.SECRET_API_TOKEN}` },
+          ],
           visualEditing: {
             enableDraftModeUrl: new URL(
               `/api/draft-mode/enable?token=${process.env.SECRET_API_TOKEN}`,
@@ -67,10 +67,8 @@ async function installSEOAnalysisPlugin(client: Client, baseUrl: string) {
 
   await client.plugins.update(seoPlugin.id, {
     parameters: {
-      htmlGeneratorUrl: new URL(
-        `/api/seo-analysis?token=${process.env.SECRET_API_TOKEN}`,
-        baseUrl,
-      ).toString(),
+      htmlGeneratorUrl: new URL('/api/seo-analysis', baseUrl).toString(),
+      customHeaders: [{ name: 'Authorization', value: `Bearer ${process.env.SECRET_API_TOKEN}` }],
       autoApplyToFieldsWithApiKey: 'seo_analysis',
       setSeoReadabilityAnalysisFieldExtensionId: true,
     },
@@ -83,9 +81,9 @@ async function installSEOAnalysisPlugin(client: Client, baseUrl: string) {
 async function createCacheInvalidationWebhook(client: Client, baseUrl: string) {
   await client.webhooks.create({
     name: '🔄 Invalidate Next.js Cache',
-    url: new URL(`/api/invalidate-cache?token=${process.env.SECRET_API_TOKEN}`, baseUrl).toString(),
+    url: new URL('/api/invalidate-cache', baseUrl).toString(),
     custom_payload: null,
-    headers: {},
+    headers: { Authorization: `Bearer ${process.env.SECRET_API_TOKEN}` },
     events: [
       {
         filters: [],

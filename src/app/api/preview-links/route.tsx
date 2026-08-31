@@ -26,11 +26,11 @@ type WebPreviewsResponse = {
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
-    // Parse query string parameters
-    const token = request.nextUrl.searchParams.get('token');
+    // The token is sent by the plugin as a request header (see /api/post-deploy)
+    const token = request.headers.get('authorization')?.replace(/^Bearer /, '');
 
     // Ensure that the request is coming from a trusted source
-    if (token !== process.env.SECRET_API_TOKEN) {
+    if (!token || token !== process.env.SECRET_API_TOKEN) {
       return invalidRequestResponse('Invalid token', 401);
     }
 
