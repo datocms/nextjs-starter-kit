@@ -4,6 +4,20 @@ type EnvironmentSettings = {
   locales: 'en';
 };
 
+export type ImageBlock = ItemTypeDefinition<
+  EnvironmentSettings,
+  'dZOhbVOTSpeaaA-wQMgPCA',
+  {
+    asset: {
+      type: 'file';
+    };
+  }
+>;
+export const ImageBlock = {
+  ID: 'dZOhbVOTSpeaaA-wQMgPCA',
+  REF: { type: 'item_type', id: 'dZOhbVOTSpeaaA-wQMgPCA' },
+} as const;
+
 export type ImageGalleryBlock = ItemTypeDefinition<
   EnvironmentSettings,
   'CoOdvsbUR8GLtGeuenXzMw',
@@ -45,20 +59,6 @@ export const Page = {
   REF: { type: 'item_type', id: 'JdG722SGTSG_jEB1Jx-0XA' },
 } as const;
 
-export type ImageBlock = ItemTypeDefinition<
-  EnvironmentSettings,
-  'dZOhbVOTSpeaaA-wQMgPCA',
-  {
-    asset: {
-      type: 'file';
-    };
-  }
->;
-export const ImageBlock = {
-  ID: 'dZOhbVOTSpeaaA-wQMgPCA',
-  REF: { type: 'item_type', id: 'dZOhbVOTSpeaaA-wQMgPCA' },
-} as const;
-
 export type VideoBlock = ItemTypeDefinition<
   EnvironmentSettings,
   'duRvS1PrT4u6QGJZUmyINA',
@@ -73,6 +73,6 @@ export const VideoBlock = {
   REF: { type: 'item_type', id: 'duRvS1PrT4u6QGJZUmyINA' },
 } as const;
 
-export type AnyBlock = ImageGalleryBlock | ImageBlock | VideoBlock;
+export type AnyBlock = ImageBlock | ImageGalleryBlock | VideoBlock;
 export type AnyModel = Page;
 export type AnyBlockOrModel = AnyBlock | AnyModel;
