@@ -123,6 +123,8 @@ That's why `http://localhost:3000` doesn't work: `localhost` means "the machine 
 
 In the steps below, replace `<BASE_URL>` with that public URL and `<SECRET_API_TOKEN>` with the value of your `SECRET_API_TOKEN` environment variable.
 
+> If you deployed this starter with the one-click flow from the DatoCMS marketplace, that value was randomly generated for you during the setup, and shown to you on the last step of the wizard. If you no longer have it, set a new one among the environment variables of your hosting provider.
+
 #### 2. Install the Web Previews plugin
 
 In your DatoCMS project, go to **Settings > Plugins > Add a new plugin**, search for [**Web Previews**](https://www.datocms.com/marketplace/plugins/i/datocms-plugin-web-previews), and install it.

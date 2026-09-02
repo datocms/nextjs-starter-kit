@@ -19,8 +19,10 @@
       "tokenName": "CMA Only (Read)"
     },
     "SECRET_API_TOKEN": {
-      "type": "string",
-      "value": "secretTokenProtectingWebhookEndpointsFromBeingCalledByAnyone"
+      "type": "secret",
+      "format": "readable",
+      "label": "Draft Mode password",
+      "description": "You'll need it to turn on Draft Mode from the website."
     },
     "DATOCMS_BASE_EDITING_URL": {
       "type": "datocmsProjectUrl"
