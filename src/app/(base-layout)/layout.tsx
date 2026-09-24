@@ -55,7 +55,10 @@ export default async function BaseLayout({
           <a href="/basic">🔧 Basic Route</a>
           <a href="/real-time-updates">⚡️ Real-time Updates Route</a>
         </nav>
-        <DraftModeToggler draftModeEnabled={isDraftModeEnabled} />
+        <DraftModeToggler
+          draftModeEnabled={isDraftModeEnabled}
+          demoPassword={process.env.DRAFT_MODE_DEMO_PASSWORD}
+        />
       </header>
       <main>{children}</main>
     </>
