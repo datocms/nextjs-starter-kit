@@ -2,16 +2,20 @@
 
 type Props = {
   draftModeEnabled: boolean;
+  demoPassword?: string;
 };
 
-export default function DraftModeToggler({ draftModeEnabled }: Props) {
+export default function DraftModeToggler({ draftModeEnabled, demoPassword }: Props) {
   async function handleClick() {
     let response: Response;
 
     if (draftModeEnabled) {
       response = await fetch('/api/draft-mode/disable');
     } else {
-      const token = prompt('To enter Draft Mode, you need to insert the SECRET_API_TOKEN:');
+      const token = prompt(
+        'To enter Draft Mode, you need to insert the SECRET_API_TOKEN:',
+        demoPassword,
+      );
       if (!token) {
         return;
       }

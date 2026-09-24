@@ -60,6 +60,8 @@ Then set the following additional variables:
 - `DATOCMS_BASE_EDITING_URL`: Your DatoCMS project URL (e.g., `https://your-project.admin.datocms.com`). This enables click-to-edit overlays that link content directly to the DatoCMS editor.
 - `SECRET_API_TOKEN`: A secure string (you can use `openssl rand -hex 32` or any other cryptographically-secure random string generator). It will be used to safeguard all route handlers from incoming requests from untrusted sources.
 
+There's also an optional `DRAFT_MODE_DEMO_PASSWORD`: when set, its value pre-fills the Draft Mode prompt for every visitor. We only use it on our public demo, so that anyone can try Draft Mode. Leave it unset on your own project.
+
 #### Run your project locally
 
 ```bash
