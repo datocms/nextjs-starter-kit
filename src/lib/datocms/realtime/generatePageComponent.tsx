@@ -16,7 +16,8 @@ import type { RealtimeComponentType } from './generateRealtimeComponent';
  *
  * When Draft Mode is OFF:
  * - DatoCMS returns the published content;
- * - the page displays `contentComponent`.
+ * - the page displays `contentComponent`, or `realtimeComponent` subscribed to
+ *   published content if `shouldSubscribeToPublishedContent` is set.
  */
 export function generatePageComponent<PageProps, Result, Variables>(
   options: GeneratePageComponentOptions<PageProps, Result, Variables>,
@@ -46,21 +47,40 @@ export function generatePageComponent<PageProps, Result, Variables>(
 
     const { realtimeComponent: RealTimeComponent, contentComponent: ContentComponent } = options;
 
-    return isDraftModeEnabled ? (
-      <RealTimeComponent
-        token={process.env.DATOCMS_DRAFT_CONTENT_CDA_TOKEN!}
-        query={options.query}
-        variables={variables}
-        initialData={data}
-        pageProps={pageProps}
-        includeDrafts={isDraftModeEnabled}
-        contentLink={isDraftModeEnabled ? 'v1' : undefined}
-        baseEditingUrl={isDraftModeEnabled ? process.env.DATOCMS_BASE_EDITING_URL : undefined}
-        excludeInvalid={true}
-      />
-    ) : (
-      <ContentComponent {...pageProps} data={data} />
-    );
+    if (isDraftModeEnabled) {
+      return (
+        <RealTimeComponent
+          token={process.env.DATOCMS_DRAFT_CONTENT_CDA_TOKEN!}
+          query={options.query}
+          variables={variables}
+          initialData={data}
+          pageProps={pageProps}
+          includeDrafts={true}
+          contentLink="v1"
+          baseEditingUrl={process.env.DATOCMS_BASE_EDITING_URL}
+          excludeInvalid={true}
+        />
+      );
+    }
+
+    if (options.shouldSubscribeToPublishedContent) {
+      /*
+       * The published-content token is read-only and only sees published
+       * records, so it is safe to hand to every visitor's browser.
+       */
+      return (
+        <RealTimeComponent
+          token={process.env.DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN!}
+          query={options.query}
+          variables={variables}
+          initialData={data}
+          pageProps={pageProps}
+          excludeInvalid={true}
+        />
+      );
+    }
+
+    return <ContentComponent {...pageProps} data={data} />;
   };
 }
 
@@ -83,4 +103,8 @@ export type GeneratePageComponentOptions<PageProps, Result, Variables> = {
 
   /** A React component that will be rendered if Draft Mode is ON. */
   realtimeComponent: RealtimeComponentType<PageProps, Result, Variables>;
+
+  /** If true, regular visitors also get `realtimeComponent`, subscribed to
+   * published content, so the page updates as soon as editors publish. */
+  shouldSubscribeToPublishedContent?: boolean;
 };

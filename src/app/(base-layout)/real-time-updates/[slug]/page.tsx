@@ -18,9 +18,11 @@ import { query } from './common';
  *
  * When Draft Mode is OFF:
  * - the content returned from DatoCMS is the published one;
- * - the rendering of `<Content />` occurs on the server side;
- * - the page is static and cached until the next change of content on DatoCMS.
- *   This means that regular visitors won't generate additional calls to DatoCMS.
+ * - the page is static and cached until the next change of content on DatoCMS;
+ * - a subscription to DatoCMS's Real-time Updates API pushes newly published
+ *   content to the page without a refresh, so the rendering of `<Content />`
+ *   occurs on the client side. Each open page holds a real-time connection.
+ *   For a page that only updates on refresh, see the `/basic` route.
  *
  * When Draft Mode is ON:
  * - the content returned from DatoCMS will be those in draft;
@@ -48,8 +50,10 @@ const { generateMetadataFn, Page } = generatePageComponentAndMetadataFn({
   // The actual content of the page. In addition to the classic page props, will
   // also receive a `data` prop containing the result of the GraphQL query
   contentComponent: Content,
-  // The Client Component to use in case Draft Mode is active
+  // The Client Component that subscribes to the Real-time Updates API
   realtimeComponent: dynamic(() => import('./RealTime')),
+  // Also stream published content to regular visitors, not only in Draft Mode
+  shouldSubscribeToPublishedContent: true,
 });
 
 export const generateMetadata = generateMetadataFn;
