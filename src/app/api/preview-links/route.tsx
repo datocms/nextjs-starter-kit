@@ -1,4 +1,6 @@
+import type { AnyModel } from '@/lib/datocms/cma-types';
 import { recordToWebsiteRoute } from '@/lib/datocms/recordInfo';
+import { buildClient } from '@datocms/cma-client';
 import { deserializeRawItem } from '@datocms/rest-client-utils';
 import { type NextRequest, NextResponse } from 'next/server';
 import { handleUnexpectedError, invalidRequestResponse, withCORS } from '../utils';
@@ -39,10 +41,38 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
      * along with information about which locale they are currently viewing in
      * the interface
      */
-    const { item, locale } = await request.json();
+    const { item, locale, environmentId } = await request.json();
 
     // We can use this info to generate the frontend URL associated
     const url = await recordToWebsiteRoute(deserializeRawItem(item), locale);
+
+    /**
+     * The plugin only sends the current (draft) version of the record. If it has
+     * unpublished changes (e.g. a modified slug), the published URL might differ,
+     * so we compute it from the published version.
+     */
+    let publishedUrl = url;
+
+    if (url && item.meta.status === 'updated') {
+      try {
+        const client = buildClient({
+          apiToken: process.env.DATOCMS_CMA_TOKEN!,
+          environment: environmentId,
+        });
+
+        const { data: publishedItem } = await client.items.rawFind<AnyModel>(item.id, {
+          version: 'published',
+        });
+
+        publishedUrl = await recordToWebsiteRoute(publishedItem, locale);
+      } catch (error) {
+        /**
+         * If the published version can't be fetched (e.g. missing CMA token),
+         * fall back to the current URL instead of losing every preview link.
+         */
+        console.error(error);
+      }
+    }
 
     const response: WebPreviewsResponse = { previewLinks: [] };
 
@@ -70,7 +100,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       }
 
       /** If status is not draft, it means that it has a published version! */
-      if (item.meta.status !== 'draft') {
+      if (publishedUrl && item.meta.status !== 'draft') {
         /**
          * Generate a URL that first exits from Next.js Draft Mode, and then
          * redirects to the desired URL.
@@ -82,7 +112,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
              * We generate the URL in a way that it first passes through the
              * endpoint that disables the Draft Mode.
              */
-            `/api/draft-mode/disable?redirect=${url}`,
+            `/api/draft-mode/disable?redirect=${publishedUrl}`,
             request.url,
           ).toString(),
         });
