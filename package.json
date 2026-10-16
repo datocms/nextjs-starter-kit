@@ -16,35 +16,45 @@
     "prepare": "npx simple-git-hooks && npm run generate-schema && npm run generate-cma-types"
   },
   "dependencies": {
-    "@datocms/cda-client": "^0.3.1",
-    "@datocms/cma-client": "^6.1.0",
-    "@datocms/content-link": "^0.3.21",
-    "@mux/mux-player-react": "^3.13.0",
-    "@types/highlight.js": "^10.1.0",
-    "datocms-plugin-sdk": "^2.1.5",
-    "datocms-react-ui": "^2.1.5",
+    "@datocms/cda-client": "^0.3.2",
+    "@datocms/cma-client": "^6.8.0",
+    "@datocms/content-link": "^0.3.23",
+    "@mux/mux-player-react": "^3.14.0",
+    "datocms-plugin-sdk": "^2.5.0",
+    "datocms-react-ui": "^2.5.1",
     "datocms-structured-text-to-plain-text": "^6.0.0",
     "datocms-structured-text-utils": "^6.0.1",
-    "gql.tada": "^1.9.0",
-    "highlight.js": "^11.11.1",
+    "gql.tada": "^1.11.4",
+    "highlight.js": "^11.12.0",
     "next": "^16",
-    "node-html-parser": "^7.0.1",
+    "node-html-parser": "^9.0.4",
     "react": "^19",
-    "react-datocms": "^8.0.5",
+    "react-datocms": "^8.1.2",
     "react-dom": "^19"
   },
   "devDependencies": {
-    "@types/jsdom": "^27.0.0",
+    "@types/jsdom": "^30.0.0",
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "datocms": "^4.0.26",
+    "datocms": "^4.2.0",
     "dotenv-cli": "^11.0.0",
-    "prettier": "3.7.4",
-    "simple-git-hooks": "^2.13.1",
-    "typescript": "^5.9.3"
+    "prettier": "3.9.10",
+    "simple-git-hooks": "^2.14.0",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "tty-table": {
+      "csv": "^6.6.4"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "npm run format"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "fsevents@2.3.3": true,
+    "simple-git-hooks@2.14.0": true,
+    "yarn@1.22.22": true
   }
 }
