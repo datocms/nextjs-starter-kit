@@ -29,7 +29,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       return invalidRequestResponse('Invalid token', 401);
     }
 
-    revalidateTag(cacheTag, 'default');
+    /*
+     * `{ expire: 0 }` expires the cached entries right away, so the first
+     * request after a publish renders fresh content: an editor who checks
+     * their change also warms the cache for everyone else. With a profile like
+     * 'max' or 'default', that first request only starts a background refresh
+     * and still gets the old page.
+     */
+    revalidateTag(cacheTag, { expire: 0 });
 
     return successfulResponse();
   } catch (error) {
