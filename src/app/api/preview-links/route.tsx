@@ -50,6 +50,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
      * The plugin only sends the current (draft) version of the record. If it has
      * unpublished changes (e.g. a modified slug), the published URL might differ,
      * so we compute it from the published version.
+     *
+     * See "How the preview links are built" in the README.
      */
     let publishedUrl = url;
 
