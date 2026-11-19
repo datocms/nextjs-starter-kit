@@ -18,7 +18,7 @@
   "dependencies": {
     "@datocms/cda-client": "^0.3.2",
     "@datocms/cma-client": "^6.8.0",
-    "@datocms/content-link": "^0.3.23",
+    "@datocms/content-link": "^0.3.24",
     "@mux/mux-player-react": "^3.14.0",
     "datocms-plugin-sdk": "^2.5.0",
     "datocms-react-ui": "^2.5.1",
