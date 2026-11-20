@@ -9,7 +9,7 @@ export const cacheTag = 'datocms';
  * This means that regular visitors won't generate additional calls to DatoCMS.
  *
  * Cache invalidation happens when DatoCMS sends a webhook that triggers
- * `revalidateTag('datocms')`. Note that on Vercel, the Data Cache persists
+ * `revalidateTag('datocms', { expire: 0 })`. Note that on Vercel, the Data Cache persists
  * across deployments — new deploys alone won't invalidate cached data. If you
  * need fresh data after deploy, trigger the webhook or purge the cache manually.
  *
